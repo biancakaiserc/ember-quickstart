@@ -1,0 +1,10 @@
+{{#plants-filter
+    filter=(action 'filterByWaterLevel')
+    as |filteredResults|}}
+    <ul class="results">
+    {{#each filteredResults as |plantsUnit|}}
+        <li>{{plants-list plant=plantsUnit}}</li>
+    {{/each}}
+    </ul>
+{{/plants-filter}}
+{{outlet}}

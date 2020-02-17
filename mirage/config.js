@@ -26,58 +26,70 @@ export default function() {
 
   this.namespace = '/api';
 
-  this.get('/plants', () => {
-    return {
-      data: [
-        {
-          id: 1,
-          type: 'plants',
-          attributes: {
-            name: 'Euphorbia eritrea',
-            sun: 'high',
-            water: 'rarely',
-            url: 'https://front-static-recruitment.s3.amazonaws.com/euphorbia-eritrea.jpg',
-            price: 25,
-            toxicity: false
-          }
-        },
-        {
-          id: 2,
-          type: 'plants',
-          attributes: {
-            name: 'Succulent Bowl',
-            sun: 'high',
-            water: 'rarely',
-            url: 'https://front-static-recruitment.s3.amazonaws.com/succulent-bowl.jpg',
-            price: 30,
-            toxicity: false
-          }
-        },
-        {
-          id: 3,
-          type: 'plants',
-          attributes: {
-            name: 'Bunny ears cacti',
-            sun: 'high',
-            water: 'rarely',
-            url: 'https://front-static-recruitment.s3.amazonaws.com/bunny-ears-cacti.jpg',
-            price: 20,
-            toxicity: false
-          }
-        },
-        {
-          id: 4,
-          type: 'plants',
-          attributes: {
-            name: 'Ficus lyrata',
-            sun: 'high',
-            water: 'regularly',
-            url: 'https://front-static-recruitment.s3.amazonaws.com/ficus-lyrata.jpg',
-            price: 30,
-            toxicity: false
-          }
-        }
-      ]
-    };
+  let plantsArr = [
+    {
+      id: 1,
+      type: 'plants',
+      attributes: {
+        name: 'Euphorbia eritrea',
+        sun: 'high',
+        water: 'rarely',
+        url: 'https://front-static-recruitment.s3.amazonaws.com/euphorbia-eritrea.jpg',
+        price: 25,
+        toxicity: false
+      }
+    },
+    {
+      id: 2,
+      type: 'plants',
+      attributes: {
+        name: 'Succulent Bowl',
+        sun: 'high',
+        water: 'rarely',
+        url: 'https://front-static-recruitment.s3.amazonaws.com/succulent-bowl.jpg',
+        price: 30,
+        toxicity: false
+      }
+    },
+    {
+      id: 3,
+      type: 'plants',
+      attributes: {
+        name: 'Bunny ears cacti',
+        sun: 'high',
+        water: 'rarely',
+        url: 'https://front-static-recruitment.s3.amazonaws.com/bunny-ears-cacti.jpg',
+        price: 20,
+        toxicity: false
+      }
+    },
+    {
+      id: 4,
+      type: 'plants',
+      attributes: {
+        name: 'Ficus lyrata',
+        sun: 'high',
+        water: 'regularly',
+        url: 'https://front-static-recruitment.s3.amazonaws.com/ficus-lyrata.jpg',
+        price: 30,
+        toxicity: false
+      }
+    }
+  ];
+
+  this.get('/plants', function(db, request) {
+    if(request.queryParams.water !== undefined) {
+      let filteredPlants = plantsArr.filter(function(i) {
+        return i.attributes.water.toLowerCase().indexOf(request.queryParams.water.toLowerCase()) !== -1;
+      });
+      return { data: filteredPlants };
+    } else {
+      return { data: plantsArr };
+    }
+  });
+
+  // Find and return the provided rental from our rental list above
+  this.get('/plants/:id', function (db, request) {
+    return { data: plantsArr.find((plant) => request.params.id == plant.id)};
   });
 }

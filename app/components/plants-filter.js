@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 
 export default Component.extend({
-    classNames: ['plant-filter'],
+    classNames: ['plants-filter'],
     value: '',
   
     init() {
