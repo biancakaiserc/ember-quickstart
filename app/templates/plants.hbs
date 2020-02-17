@@ -1,5 +1,16 @@
 <h2>PLANTS</h2>
 
-{{plants-list title="Teste" plants=model}}
+{{!-- {{#plants-filter
+    filter=(action 'filterByWaterLevel')
+    as |filteredResults|}}
+    <ul class="results">
+    {{#each filteredResults as |plantsUnit|}}
+        <li>{{plants-list plants=plantsUnit}}</li>
+    {{/each}}
+    </ul>
+{{/plants-filter}} --}}
 
-{{outlet}}
+
+{{#each model as |plantsUnit|}}
+  {{plants-list plant=plantsUnit}}
+{{/each}}

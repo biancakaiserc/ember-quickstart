@@ -1,24 +1,18 @@
-{{yield}}
-
 <h2>{{title}}</h2>
 
-<ul>
-    {{#each plants as |plant|}}
-        <article class="listing">
-            <h3>{{plant.name}}</h3>
-            <img src="{{plant.url}}" alt="">
-            <div class="detail sun">
-                <span>Sun Level:</span> {{plant.sun}}
-            </div>
-            <div class="detail water">
-                <span>Water Level:</span> {{plant.water}}
-            </div>
-            <div class="detail price">
-                <span>Price:</span> {{plant.price}}
-            </div>
-            <div class="detail toxicity">
-                <span>Is Toxic?</span> {{plant.toxicity}}
-            </div>
-        </article>
-    {{/each}}
-</ul>
+<article class="listing">
+    <img src={{plant.url}} alt="">
+    <h3>{{plant.name}}</h3>
+    <div class="detail sun">
+        <span>Sun Level:</span> {{plant.sun}}
+    </div>
+    <div class="detail water">
+        <span>Water Level:</span> {{plant.water}}
+    </div>
+    <div class="detail price">
+        <span>Price:</span> {{plant.price}}
+    </div>
+    <div class="detail toxicity">
+        <span>Is Toxic?</span> {{plant.toxicity}}
+    </div>
+</article>

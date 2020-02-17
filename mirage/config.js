@@ -24,7 +24,7 @@ export default function() {
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
 
-  this.namespace = 'api';
+  this.namespace = '/api';
 
   this.get('/plants', () => {
     return {
