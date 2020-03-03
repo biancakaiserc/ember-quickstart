@@ -26,6 +26,77 @@ export default function() {
 
   this.namespace = '/api';
 
+  let formSteps = [
+    {
+      id: 1,
+      type: 'steps',
+      attributes: {
+        type: 'sunlight',
+        title: 'First, set the amount of sunlight you plant will get.',
+        image: 'teste1',
+        color: 'coral',
+        cards: [
+          {
+            subtitle: 'High Sunlight',
+            icon: '1'
+          },
+          {
+            subtitle: 'Low Sunlight',
+            icon: '2'
+          },
+          {
+            subtitle: 'No Sunlight',
+            icon: '3'
+          }
+        ]
+      }
+    },
+    {
+      id: 1,
+      type: 'steps',
+      attributes: {
+        type: 'water',
+        title: 'How often do you want to water your plant?',
+        image: 'teste1',
+        color: 'green',
+        cards: [
+          {
+            subtitle: 'Rarely',
+            icon: '1'
+          },
+          {
+            subtitle: 'Regularly',
+            icon: '2'
+          },
+          {
+            subtitle: 'Daily',
+            icon: '3'
+          }
+        ]
+      }
+    },
+    {
+      id: 1,
+      type: 'steps',
+      attributes: {
+        type: 'pets',
+        title: 'Do you have pets? Do they chew plants?',
+        image: 'teste1',
+        color: 'coral',
+        cards: [
+          {
+            subtitle: 'Yes',
+            icon: '1'
+          },
+          {
+            subtitle: "No/They don't care",
+            icon: '2'
+          }
+        ]
+      }
+    }
+  ];
+
   let plantsArr = [
     {
       id: 1,
@@ -91,5 +162,14 @@ export default function() {
   // Find and return the provided rental from our rental list above
   this.get('/plants/:id', function (db, request) {
     return { data: plantsArr.find((plant) => request.params.id == plant.id)};
+  });
+
+
+  this.get('/steps', function(db, request) {
+    return { data: formSteps };
+  });
+
+  this.get('/steps/:id', function(db, request) {
+    return { data: formSteps.find((step) => request.params.id == step.id) };
   });
 }

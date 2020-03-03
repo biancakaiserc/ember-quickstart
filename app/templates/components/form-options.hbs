@@ -1,0 +1,11 @@
+<div class="step">
+    <img src="{{step.image}}" alt="">
+    <h2 class="step_title">{{step.title}}</h2>
+    <div class="step_cards">
+        <ul class="cards">
+        {{#each step.cards as |cardUnit|}}
+            <li>{{base-card card=cardUnit}}</li>
+        {{/each}}
+    </ul>
+    </div>
+</div>

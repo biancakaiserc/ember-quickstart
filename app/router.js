@@ -10,6 +10,12 @@ Router.map(function() {
   this.route('plants', function() {
     this.route('detailed',  { path: '/:plant_id' });
   });
+  this.route('quizz', function() {
+    this.route('sunlight');
+    this.route('water');
+    this.route('pets');
+  });
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
