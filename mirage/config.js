@@ -52,7 +52,7 @@ export default function() {
       }
     },
     {
-      id: 1,
+      id: 2,
       type: 'steps',
       attributes: {
         type: 'water',
@@ -76,7 +76,7 @@ export default function() {
       }
     },
     {
-      id: 1,
+      id: 3,
       type: 'steps',
       attributes: {
         type: 'pets',

@@ -1,0 +1,9 @@
+<div class="quizz">
+  <form action="">
+    <p>ISSO É UM FORM</p>
+    {{!-- {{log model}} --}}
+    {{#each model as |stepObject|}}
+      {{form-options step=stepObject}}
+    {{/each}}
+  </form>
+</div>
